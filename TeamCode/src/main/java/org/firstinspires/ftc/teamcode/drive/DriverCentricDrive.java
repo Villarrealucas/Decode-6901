@@ -1,5 +1,7 @@
-package org.firstinspires.ftc.Decode.drive;
+package org.firstinspires.ftc.teamcode.drive;
 
+import com.acmerobotics.roadrunner.Action;
+import com.acmerobotics.roadrunner.Pose2d;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
@@ -18,7 +20,7 @@ public class DriverCentricDrive {
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
         rightBack = hardwareMap.get(DcMotor.class, "rightBack");
 
-        leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftFront.setDirection(DcMotorSimple.Direction. REVERSE);
         leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
         rightFront.setDirection(DcMotorSimple.Direction.FORWARD);
         rightBack.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -28,14 +30,14 @@ public class DriverCentricDrive {
         rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+
     }
 
     public void DriverCentricDrive() {
         if(Driver1.right_bumper){
-            speed=.5;
-        } else{
-            speed=1;
-        }
+            speed=.5;}
+        else{
+            speed=1;}
         double y = -Driver1.left_stick_y;
         double x = Driver1.left_stick_x * 1.1;
         double rx = Driver1.right_stick_x;
@@ -51,8 +53,8 @@ public class DriverCentricDrive {
         rightFront.setPower(frontRightPower);
         rightBack.setPower(backRightPower);
     }
+ }
 
-    }
 
 
 

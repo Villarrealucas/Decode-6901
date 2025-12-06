@@ -1,27 +1,31 @@
-package org.firstinspires.ftc.Decode.opmodes;
+package org.firstinspires.ftc.teamcode.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.Decode.drive.DriverCentricDrive;
-import org.firstinspires.ftc.Decode.drive.FieldCentricDrive;
-import org.firstinspires.ftc.Decode.subsystems.MotorIntake;
-import org.firstinspires.ftc.Decode.subsystems.flyWheel;
+
+import org.firstinspires.ftc.teamcode.drive.DriverCentricDrive;
+import org.firstinspires.ftc.teamcode.subsystems.MotorIntake;
+import org.firstinspires.ftc.teamcode.subsystems.FlyWheel;
+import org.firstinspires.ftc.teamcode.subsystems.Outtake;
+
 
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp
 public class TeleOp extends LinearOpMode {
-
     @Override
     public void runOpMode() throws InterruptedException {
-        DriverCentricDrive drive = new DriverCentricDrive(this);
+        DriverCentricDrive driverCentricDrive= new DriverCentricDrive(this);
         MotorIntake motorIntake = new MotorIntake(this);
-        flyWheel flyWheel = new flyWheel(this);
+        FlyWheel flyWheel = new FlyWheel(this);
+        Outtake outtake = new Outtake(this);
+
 
 
         waitForStart();
         while(opModeIsActive()) {
-            drive.DriverCentricDrive();
+            driverCentricDrive.DriverCentricDrive();
             motorIntake.motorIntake();
             flyWheel.flyWheel();
+            outtake.outtake();
 
         }
 
