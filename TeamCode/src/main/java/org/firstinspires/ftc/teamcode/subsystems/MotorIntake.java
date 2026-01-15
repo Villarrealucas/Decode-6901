@@ -8,36 +8,34 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 
 public class MotorIntake {
-    private DcMotor run;
+    public static Object Start;
+    private static DcMotor run;
+    private final HardwareMap hardwareMap;
+    private final Gamepad Driver1;
 
-    private HardwareMap hardwareMap;
-    private Gamepad Driver1;
-
-    public MotorIntake(OpMode opMode){
+    public MotorIntake(OpMode opMode) {
         Driver1 = opMode.gamepad1;
         hardwareMap = opMode.hardwareMap;
 
-        run = hardwareMap.get(DcMotor.class,"run");
+        run = hardwareMap.get(DcMotor.class, "run");
         run.setDirection(DcMotorSimple.Direction.FORWARD);
         run.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    }
 
-        }
     public void motorIntake() {
-            if (Driver1.a) Start();
-            else if (Driver1.b) Outake ();
-            else Stop();
+        if (Driver1.a) {
+            Start();
+        } else {
+            Stop();
         }
-
-    private void Outake() {
-        run.setPower(-1);
+        if (Driver1.x) {
+            run.setPower(-1);
+        }
     }
-
-    private void Start() {
+    public static void Start() {
         run.setPower(1);
-
-
     }
-    private void Stop() {
+    public static void Stop() {
         run.setPower(0);
     }
 }
