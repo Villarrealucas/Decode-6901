@@ -38,6 +38,42 @@ public final class NewAutos extends LinearOpMode {
 
         outtake.flywheelsOn();
 
+
+        Actions.runBlocking(
+                drive.actionBuilder(pose)
+                        .strafeTo(new Vector2d(-7, -9))
+                        .build()
+        );
+        pose = drive.localizer.getPose();
+
+        outtake.runOn();
+        sleep(1300);
+        outtake.stopFlywheels();
+
+
+        // ---------- Move to first pickup ----------
+
+
+        Actions.runBlocking(
+                drive.actionBuilder(pose)
+                        .turn(Math.toRadians(45))
+                        .build()
+        );
+        pose = drive.localizer.getPose();
+
+        sleep(500);
+
+        Actions.runBlocking(
+                drive.actionBuilder(pose)
+                        .strafeTo(new Vector2d(14, -51))
+                        .build()
+        );
+        pose = drive.localizer.getPose();
+
+        outtake.runOff();
+        outtake.flywheelsOn();
+
+        // ---------- Score again ----------
         Actions.runBlocking(
                 drive.actionBuilder(pose)
                         .strafeTo(new Vector2d(-9, -11))
@@ -45,85 +81,41 @@ public final class NewAutos extends LinearOpMode {
         );
         pose = drive.localizer.getPose();
 
-        outtake.all();
-        sleep(1500);
-        outtake.rest();
-
-        // ---------- Move to first pickup ----------
-
+        outtake.moveRight();
+        sleep(300);
+        outtake.restPos();
         outtake.runOn();
-
-        Actions.runBlocking(
-                drive.actionBuilder(pose)
-                        .turn(Math.toRadians(45))
-                        .strafeTo(new Vector2d(12, -51))
-                        .build()
-        );
-        pose = drive.localizer.getPose();
-
-        outtake.runOff();
-
-        // ---------- Score again ----------
-        Actions.runBlocking(
-                drive.actionBuilder(pose)
-                        .turn(Math.toRadians(-45))
-                        .strafeTo(new Vector2d(-6, -6))
-                        .build()
-        );
-        pose = drive.localizer.getPose();
-
-        outtake.all();
-        sleep(2000);
-        outtake.rest();
+        sleep(1300);
+        outtake.stopFlywheels();
 
         // ---------- Second pickup ----------
         Actions.runBlocking(
                 drive.actionBuilder(pose)
-                        .strafeTo(new Vector2d(12, -21))
+                        .strafeTo(new Vector2d(14, -30))
+                        .strafeTo(new Vector2d(14, -51))
                         .build()
         );
         pose = drive.localizer.getPose();
 
-        outtake.runOn();
-        sleep(300);
-
-        Actions.runBlocking(
-                drive.actionBuilder(pose)
-                        .strafeTo(new Vector2d(12, -51))
-                        .build()
-        );
-        pose = drive.localizer.getPose();
-
-        outtake.rest();
+        outtake.runOff();
+        outtake.flywheelsOn();
 
         // ---------- Score again ----------
         Actions.runBlocking(
                 drive.actionBuilder(pose)
-                        .turn(Math.toRadians(-45))
-                        .strafeTo(new Vector2d(-6, -6))
-                        .build()
-        );
-        pose = drive.localizer.getPose();
-
-        outtake.all();
-        sleep(2000);
-        outtake.rest();
-
-        // ---------- Final pickup ----------
-        Actions.runBlocking(
-                drive.actionBuilder(pose)
-                        .strafeTo(new Vector2d(36, -21))
+                        .strafeTo(new Vector2d(-7, -9))
                         .build()
         );
         pose = drive.localizer.getPose();
 
         outtake.runOn();
-        sleep(300);
-
-
+        sleep(1300);
+        outtake.stopFlywheels();
+        // ---------- Final pickup ----------
         Actions.runBlocking(
                 drive.actionBuilder(pose)
-                        .strafeTo(new Vector2d(36, -51))
+                        .strafeTo(new Vector2d(38, -30))
+                        .strafeTo(new Vector2d(38, -51))
                         .build()
         );
         pose = drive.localizer.getPose();
@@ -132,11 +124,44 @@ public final class NewAutos extends LinearOpMode {
 
         Actions.runBlocking(
                 drive.actionBuilder(pose)
-                        .splineToSplineHeading(new Pose2d(-6, -6, Math.toRadians(-135)), Math.toRadians(0))
+                        .strafeTo(new Vector2d(10, -58))
+                        .build());
+        pose = drive.localizer.getPose();
+
+                sleep(300);
+                outtake.flywheelsOn();
+
+        Actions.runBlocking(
+                drive.actionBuilder(pose)
+                        .strafeTo(new Vector2d(-7, -9))
                         .build());
 
-                outtake.flywheelsOn();
-               sleep(2000);
-                outtake.stopFlywheels();
+        pose = drive.localizer.getPose();
+
+        outtake.runOn();
+        sleep(1300);
+        outtake.rest();
+
+//        Actions.runBlocking(
+//                drive.actionBuilder(pose)
+//                        .strafeTo(new Vector2d(6, -54))
+//                        .build());
+//        pose = drive.localizer.getPose();
+//
+//
+//        sleep(300);
+//        outtake.runOff();
+//        outtake.flywheelsOn();
+//
+//        Actions.runBlocking(
+//                drive.actionBuilder(pose)
+//                        .strafeTo(new Vector2d(-9, -11))
+//                        .build());
+//
+//        pose = drive.localizer.getPose();
+//
+//        outtake.runOn();
+//        sleep(1300);
+//        outtake.rest();
     }
 }
